@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horvath Data Labs | Modern Data Engineering</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: #1a1a1a;
+            background-color: #fcfcfc;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #0b3c3c; /* Dark teal theme */
+            color: #ffffff;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        nav a {
+            color: #d1e2e2;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Section (Above the Fold) */
+        .hero-container {
+            display: flex;
+            background-color: #0b3c3c;
+            color: #ffffff;
+            min-height: 80vh;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding: 80px 5% 80px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: #c2d6d6;
+            margin-bottom: 36px;
+            max-width: 540px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            align-self: flex-start;
+            background-color: #ffffff;
+            color: #0b3c3c;
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-primary:hover {
+            background-color: #e2f0f0;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop'); /* Replace with your tower image */
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+        }
+
+        /* 4-Step Process Section */
+        .process-section {
+            padding: 100px 8%;
+            background-color: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #0b3c3c;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #555555;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #f4f8f8;
+            border: 1px solid #e1ecec;
+            border-radius: 8px;
+            padding: 36px 28px;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #0b3c3c;
+            background-color: #d8eaea;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .card h4 {
+            font-size: 0.9rem;
+            color: #556b6b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            line-height: 1.5;
+        }
+
+        /* Applied Expertise Section Preview */
+        .expertise-section {
+            padding: 80px 8%;
+            background-color: #f4f8f8;
+            border-top: 1px solid #e1ecec;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .expertise-card {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 6px;
+            border: 1px solid #e1ecec;
+        }
+
+        .expertise-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #0b3c3c;
+        }
+
+        .expertise-card a {
+            display: inline-block;
+            margin-top: 14px;
+            color: #0b3c3c;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column;
+            }
+            .hero-text {
+                padding: 60px 6%;
+            }
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+            .hero-image {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">Horvath Data Labs</div>
+        <nav>
+            <a href="#process">Our Process</a>
+            <a href="#expertise">Applied Expertise</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- SECTION 1: HERO (Clean, Above the Fold) -->
+    <section class="hero-container">
+        <div class="hero-text">
+            <h1>Consolidate, Govern, Predict, Execute.</h1>
+            <p>We build the modern data pipelines, semantic layers, and predictive models that turn fragmented operational data into trusted business decisions.</p>
+            <a href="#contact" class="btn-primary">Schedule a Data Architecture Review</a>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- SECTION 2: THE 4-STEP PROCESS (Horizontal 4-Card Grid) -->
+    <section class="process-section" id="process">
+        <div class="section-header">
+            <h2>End-to-End Operational Intelligence</h2>
+            <p>Modern businesses don't suffer from a lack of data; they suffer from data fragmentation. Our four-stage methodology bridges raw infrastructure with predictive execution.</p>
+        </div>
+
+        <div class="grid-container">
+            <!-- Step 1 -->
+            <div class="card">
+                <span class="step-number">STEP 01</span>
+                <h3>Consolidate</h3>
+                <h4>Pipeline Engineering</h4>
+                <p>We unify fragmented data from your software vendors, public registries, and CRM records into a clean, audited operational warehouse.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="card">
+                <span class="step-number">STEP 02</span>
+                <h3>Govern</h3>
+                <h4>Semantic Layer</h4>
+                <p>We build a custom semantic layer on top of your warehouse so your leadership, team, and AI tools query key metrics in plain English with zero hallucinations.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="card">
+                <span class="step-number">STEP 03</span>
+                <h3>Predict</h3>
+                <h4>Machine Learning</h4>
+                <p>We deploy custom machine learning models across your unified data to calculate propensity scores, identify high-value prospects, and eliminate wasted spend.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="card">
+                <span class="step-number">STEP 04</span>
+                <h3>Execute</h3>
+                <h4>Agile Strategy & Validation</h4>
+                <p>We work directly alongside your team to implement feedback loops, validate model predictions, and ensure "data-driven" becomes an operational reality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: APPLIED EXPERTISE (Targeted Subpage Links) -->
+    <section class="expertise-section" id="expertise">
+        <div class="section-header" style="margin-bottom: 20px;">
+            <h2>Applied Expertise</h2>
+            <p>Explore how our engineering architecture solves specialized operational challenges.</p>
+        </div>
+
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h4>System Conversions & Migrations</h4>
+                <p>Eliminate risk during major software updates with version-controlled pipelines and automated SME validation frameworks.</p>
+                <a href="#">Read Migration Approach &rarr;</a>
+            </div>
+            <div class="expertise-card">
+                <h4>Semantic Layers & AI Readiness</h4>
+                <p>Bridge the gap between raw internal databases and AI querying with hardcoded metric logic and context governance.</p>
+                <a href="#">Read Semantic Overview &rarr;</a>
+            </div>
+            <div class="expertise-card">
+                <h4>Customer Propensity Modeling</h4>
+                <p>Combine public records, municipal data, and CRM history to target homeowners and prospects with machine-learning accuracy.</p>
+                <a href="#">Read Targeting Case Study &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
