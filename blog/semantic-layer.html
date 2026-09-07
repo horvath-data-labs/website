@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Doesn’t Hallucinate Because It’s Dumb. It Hallucinates Because It Lacks Context. | Horvath Data Labs</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <!-- Shared Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      // Automatically set the 'active' class on the matching navigation link
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const links = placeholder.querySelectorAll('nav a');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || href === '/' + currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+</script>
+
+    <!-- ARTICLE HERO SECTION -->
+    <section class="article-hero">
+        <span class="category-tag">Semantic Layer Implementation</span>
+        <h1>AI Doesn’t Hallucinate Because It’s Dumb. It Hallucinates Because It Lacks Context.</h1>
+        <p class="subtitle">Query your internal database with natural language, powered by a custom-engineered semantic layer.</p>
+    </section>
+
+    <!-- MAIN ARTICLE BODY -->
+    <main class="article-container">
+        <article class="article-body">
+        
+            <p class="intro-lead">In today’s market, business leaders are expected to use AI as a baseline requirement of their job. You’re likely already using LLMs to draft emails, research markets, and outline presentations. But when it comes to your company’s custom internal database, the operational brain of your business, AI falls flat.</p>
+
+            <div class="cost-box">
+                <h3>The Challenge with Internal Data & Off-the-Shelf Tools</h3>
+                <ul>
+                    <li><strong>Isolated SaaS Reporting:</strong> Your off-the-shelf SaaS tools all have clean, built-in reporting dashboards and may allow natural language querying for isolated data.</li>
+                    <li><strong>No Unified Operational Layer:</strong> These tools don't talk to each other, and there is no out-of-the-box reporting layer for the custom database where your core operational data actually lives.</li>
+                    <li><strong>Manual & Inconsistent Querying:</strong> Teams rely on custom SQL queries, endless spreadsheet exports, or filtering through rigid dropdowns—leading to department heads walking into meetings with conflicting numbers.</li>
+                </ul>
+            </div>
+
+            <p>Granting AI raw access to an ungoverned data setup only magnifies the chaos, resulting in wild hallucinations and risky business decisions.</p>
+
+            <h2>A Done-For-You Solution Built for Your Existing Data Stack</h2>
+            <p>Horvath Data Labs designs, builds, and manages custom semantic layers tailored directly to your organization's infrastructure. We act as your dedicated engineering partner to bridge the gap between raw data and reliable AI insights, without forcing you to buy another self-serve SaaS tool that sits idle on a shelf.</p>
+
+            <p>A <strong>semantic layer</strong> acts as the universal translator between your raw data and both your people and your AI. It provides essential context: defining what each data field truly represents, mapping how fields interact, and hardcoding your business logic so KPIs, financial metrics, and operational performance are calculated correctly every single time.</p>
+
+            <h2>What to Expect When Partnering with Us</h2>
+
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Zero Infrastructure Overhaul</h3>
+                    <p>We build directly on top of your existing relational database or data warehouse (Snowflake, BigQuery, Databricks, PostgreSQL, SQL Server, and more).</p>
+                </div>
+
+                <div class="card">
+                    <h3>End-to-End Execution</h3>
+                    <p>From auditing schemas and standardizing metric definitions to engineering the translation architecture, our team handles the heavy lifting.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Scoped to Your Scale</h3>
+                    <p>Engagements are structured based on your database complexity, starting with a focused sprint to map core KPIs, followed by a full schema rollout.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Guaranteed Reliability</h3>
+                    <p>Your team and your AI get a single source of truth, eliminating table-locking risks on production databases and preventing hallucinated answers.</p>
+                </div>
+            </div>
+
+            <h2>Stop Guessing. Start Trusting Your Operational Data.</h2>
+            <p>Give your team, and your AI, the context they need to deliver answers you can actually trust.</p>
+
+        </article>
+    </main>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h3>Book a 20-Minute Data & AI Readiness Assessment</h3>
+            <p>Discover how a custom semantic layer can transform your raw internal databases into reliable, AI-ready business intelligence.</p>
+            <a href="/contact.html" class="btn-primary">Book Your 20-Minute Assessment</a>
+        </div>
+    </section>
+
+</body>
+</html>
