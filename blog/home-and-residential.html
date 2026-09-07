@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Wasting Marketing Dollars on Homes That Don’t Need Work | Horvath Data Labs</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <!-- Shared Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      // Automatically set the 'active' class on the matching navigation link
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const links = placeholder.querySelectorAll('nav a');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || href === '/' + currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+</script>
+
+    <!-- ARTICLE HERO SECTION -->
+    <section class="article-hero">
+        <span class="category-tag">Home Services Data Strategy</span>
+        <h1>Stop Wasting Marketing Dollars on Homes That Don’t Need Work</h1>
+        <p class="subtitle">Why blanket town marketing fails home service contractors—and how public data pipelines unlock precision homeowner targeting.</p>
+    </section>
+
+    <!-- MAIN ARTICLE BODY -->
+    <main class="article-container">
+        <article class="article-body">
+        
+            <p class="intro-lead">If you run a residential home services business, you know your operational growth depends on finding new customers. But finding them is becoming prohibitively expensive.</p>
+
+            <div class="cost-box">
+                <h3>The Reality of Traditional Home Service Marketing</h3>
+                <ul>
+                    <li><strong>Every Door Direct Mail (EDDM):</strong> Can exceed $1,000 in postage alone just to cover a single zip code.</li>
+                    <li><strong>Search Engine Ads:</strong> Range from $15 to $35+ per click, often stacking up to $150+ for a single qualified lead.</li>
+                    <li><strong>Door Knocking & Outreach:</strong> Turns into a time-intensive, high-friction experiment without prior address verification.</li>
+                </ul>
+            </div>
+
+            <p>The problem usually isn't your offer, your reputation, or the quality of your craftsmanship. <strong>The problem is targeting.</strong> You are spending hard-earned capital trying to market to an entire town, rather than focusing strictly on the specific addresses that actually require your services today.</p>
+
+            <h2>The Hidden Signals in Local Public Data</h2>
+            <p>The property intelligence required to build high-converting target lists already exists in public records. However, it sits fragmented across disparate town portals, land cards, and unformatted registries. When unified, these records reveal clear signals:</p>
+
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Assessor Land Cards</h3>
+                    <p>Pinpoints precise home build dates, square footage, and exterior materials (e.g., cedar siding vs. vinyl, asphalt shingle vs. slate).</p>
+                </div>
+
+                <div class="card">
+                    <h3>Municipal Permits</h3>
+                    <p>Reveals repair history—or the absence of one. A home built in 1998 with zero roofing or HVAC permits on file for 20 years is a high-propensity replacement target.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Real Estate Sales</h3>
+                    <p>Identifies recent home buyers who are actively executing planned renovation budgets, interior painting, landscaping overhauls, or energy upgrades.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Census & Demographics</h3>
+                    <p>Filters out low-equity or budget-constrained neighborhoods, allowing you to focus premium offerings strictly on qualified addresses.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Your CRM History</h3>
+                    <p>Analyzes the exact structural and demographic traits of your highest-margin past clients to model lookalikes across target geographies.</p>
+                </div>
+            </div>
+
+            <h2>How Horvath Data Labs Solves This</h2>
+            <p>We don’t just clean and hand you static spreadsheets—we architect automated, reproducible data pipelines that feed actionable targeting directly into your sales and marketing operations.</p>
+
+            <ul class="solution-list">
+                <li><strong>Automated Data Aggregation:</strong> We build custom pipelines to continuously extract and structure local construction dates, municipal permit histories, real estate transactions, and census data.</li>
+                <li><strong>CRM Analysis & Lookalike Modeling:</strong> We connect directly to your historical CRM database to identify patterns among your most profitable past clients.</li>
+                <li><strong>Predictive Scoring Models:</strong> We deploy machine learning models that assign predictive propensity scores to every single homeowner in your territory.</li>
+                <li><strong>Seamless Workflow Integration:</strong> Target address lists are piped directly into your existing CRM, direct mail fulfillment houses, or field sales routing software.</li>
+            </ul>
+
+        </article>
+    </main>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h3>Stop Paying to Market to Homes That Can't Buy</h3>
+            <p>Discover how precision data targeting can eliminate wasted ad spend and dramatically increase your marketing ROI.</p>
+            <a href="/contact.html" class="btn-primary">Schedule a Free Data Architecture Consultation</a>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Data Architecture Review | Horvath Data Labs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Shared Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <script>
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          const placeholder = document.getElementById('header-placeholder');
+          placeholder.innerHTML = data;
+
+          // Automatically set the 'active' class on the matching navigation link
+          const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+          const links = placeholder.querySelectorAll('nav a');
+          links.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+              link.classList.add('active');
+            }
+          });
+        });
+    </script>
+
+    <div class="container">
+        
+        <div class="info-col">
+            <h1>Schedule a Data Architecture Review</h1>
+            <p>A focused strategic working session to evaluate your current data pipelines, uncover technical debt, and chart a clear path to reliable analytics.</p>
+
+            <div class="expectations-card">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>No Sales Pitch:</strong> Pure engineering perspective focused on solving practical bottlenecks.</li>
+                    <li><strong>Stack Assessment:</strong> Direct feedback on your existing ETL/ELT pipelines, database schemas, and metrics governance.</li>
+                    <li><strong>Actionable Roadmap:</strong> Concrete next steps tailored to your operational goals.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <form name="data-architecture-review" method="POST" data-netlify="true">
+                
+                <input type="hidden" name="form-name" value="data-architecture-review" />
+
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Work Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="jane@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company / Organization *</label>
+                    <input type="text" id="company" name="company" required placeholder="Acme Corp">
+                </div>
+
+                <div class="form-group">
+                    <label for="primary-challenge">Primary Focus Area</label>
+                    <select id="primary-challenge" name="primary-challenge">
+                        <option value="data-normalization">System Conversion / Migration</option>
+                        <option value="governance">Data Governance & Semantic Layer</option>
+                        <option value="analytics-infra">Reporting Infrastructure & Analytics</option>
+                        <option value="other">Other / Custom Engineering Project</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Current Stack & Key Challenges</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell me a bit about your current setup (e.g., database platforms, reporting tools, or data pipeline issues)..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Request Review</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>
