@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residential HVAC Data Pilot | Horvath Data Labs</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Global Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fcfcfc;
+      color: #1a1a1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hero Section - Split 2-Column Layout */
+    .hero {
+      background-color: #0b3c3c;
+      color: #ffffff;
+      padding: 0;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      min-height: 520px;
+    }
+
+    .hero-text-side {
+      padding: 64px 48px 64px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: rgba(216, 234, 234, 0.15);
+      color: #d8eaea;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(216, 234, 234, 0.2);
+    }
+
+    .hero-text-side h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .hero-text-side p {
+      font-size: 1.05rem;
+      color: #c2d6d6;
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 540px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #0b3c3c;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #e2f0f0;
+      transform: translateY(-1px);
+    }
+
+    .hero-image-side {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+    }
+
+    .hero-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center left;
+      display: block;
+    }
+
+    /* Main Content Layout Isolation - Prevents styles.css side-by-side distortions */
+    .main-content {
+      padding: 64px 0 80px;
+      display: block !important;
+      width: 100% !important;
+    }
+
+    .container {
+      max-width: 1080px !important;
+      margin: 0 auto !important;
+      padding: 0 24px !important;
+      display: block !important;
+      width: 100% !important;
+    }
+
+    .container > * {
+      width: 100% !important;
+    }
+
+    /* 2-Column Info Block */
+    .grid-2 {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 32px !important;
+      margin-bottom: 48px !important;
+    }
+
+    .card {
+      background: #f4f8f8;
+      border: 1px solid #e1ecec;
+      border-radius: 8px;
+      padding: 36px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      color: #0b3c3c;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      color: #4a4a4a;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    /* Highlight Banner Card */
+    .offer-card {
+      background-color: #ffffff;
+      border: 1px solid #e1ecec;
+      border-left: 5px solid #0b3c3c;
+      border-radius: 8px;
+      padding: 40px;
+      margin-bottom: 48px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .offer-card h2 {
+      font-size: 1.8rem;
+      color: #0b3c3c;
+      margin-bottom: 16px;
+    }
+
+    .offer-card p {
+      color: #2d3748;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .exchange-box {
+      background-color: #f4f8f8;
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 20px;
+      border: 1px solid #e1ecec;
+    }
+
+    .exchange-box p {
+      color: #1a1a1a;
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    /* Learning Objectives Grid */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #0b3c3c;
+      margin-bottom: 32px;
+    }
+
+    .learn-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 24px !important;
+      margin-bottom: 64px !important;
+    }
+
+    .learn-item {
+      background: #f4f8f8;
+      border: 1px solid #e1ecec;
+      border-radius: 8px;
+      padding: 28px 24px;
+    }
+
+    .learn-item h3 {
+      font-size: 1.1rem;
+      color: #0b3c3c;
+      margin-bottom: 10px;
+    }
+
+    .learn-item p {
+      color: #555555;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Contact Section Card */
+    .contact-card {
+      background-color: #0b3c3c;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-card p {
+      color: #d1e2e2;
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+    }
+
+    .contact-info {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px 32px;
+      border-radius: 8px;
+      border: 1px solid rgba(216, 234, 234, 0.2);
+    }
+
+    .contact-info .name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .contact-info .title {
+      color: #d8eaea;
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-info a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Responsive Overrides */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .hero-text-side {
+        padding: 48px 32px;
+      }
+      .hero-image-side {
+        height: 380px;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr !important;
+      }
+      .learn-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <script>
+    fetch('/header.html')
+      .then(response => response.text())
+      .then(data => {
+        const placeholder = document.getElementById('header-placeholder');
+        placeholder.innerHTML = data;
+
+        // Automatically set the 'active' class on the matching navigation link
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const links = placeholder.querySelectorAll('nav a');
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || href === '/' + currentPage) {
+            link.classList.add('active');
+          }
+        });
+      });
+  </script>
+
+  <!-- Hero Section with Split Image -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text-side">
+        <span class="badge">HVAC Services Improved Outreach</span>
+        <h1>Save Time and Money Growing Your Residential Business</h1>
+        <p>
+          Blanket mailers can cost $1,000+ per zip code, while cold knocking every door in a neighborhood burns payroll and time. Inbound channels are an important part of customer acquisition, but they leave you bidding against your competitors for a small pool of customers while ignoring prime replacement candidates. Horvath Data Labs offers predictive property intelligence to find local homeowners with the highest likelihood to purchase an HVAC system before winter.
+        </p>
+        <a href="#contact" class="btn-primary">Claim Pilot Offer</a>
+      </div>
+      <div class="hero-image-side">
+        <img src="https://media.istockphoto.com/id/490908526/photo/technician-looking-over-a-gas-furnace.jpg?s=612x612&w=0&k=20&c=evCP27BBXR33XQXd2OhF1M5vzGaWnQiX09Lm2mZ1nmc=" alt="Technician inspecting gas furnace">
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- 2-Column Info Block -->
+      <div class="grid-2">
+        <div class="card">
+          <h2>Modern Analytics Made Accessible</h2>
+          <p>
+            We don’t just filter town spreadsheets by house age. We aggregate municipal permit histories, assessor land cards, census block data, and property transfers to model what your actual paying customers look like. Then, we isolate local lookalike properties primed for an HVAC replacement before winter.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>What is Horvath Data Labs?</h2>
+          <p>
+            Horvath Data Labs is an independent data shop based in Simsbury, CT, run by Steve Horvath. Drawing on 15 years of experience in data engineering, marketing analysis, and micro-targeting, our mission is to provide businesses like yours with the professional-grade tools and services you need to compete in a data-driven market.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Pilot Offer Box -->
+      <section class="offer-card">
+        <h2>The Pilot Offer: 200 Free Scored Addresses</h2>
+        <p>
+          We are currently validating our predictive data pipeline and need to prove its real-world return on investment in the field. We are seeking two local HVAC installation and repair contractors this fall to act as pilot partners.
+        </p>
+        <div class="exchange-box">
+          <p>
+            <strong>The Pilot Exchange:</strong> In exchange for a 15-minute coffee sit-down and your commitment to share simple performance results—specifically quote rates, close rates, and job size—we will deliver 200 top-tier local target addresses completely free. This real-world field data gives us the hard performance statistics needed to prove our model, while giving your shop exclusive first access to 200 prime replacement targets before winter hits.
+          </p>
+        </div>
+      </section>
+
+      <!-- Learning Goals Section -->
+      <section>
+        <h2 class="section-title">What We Want to Learn From You</h2>
+        <div class="learn-grid">
+          <div class="learn-item">
+            <h3>Outbound Outreach</h3>
+            <p>How do your reps currently go after new residential jobs?</p>
+          </div>
+          <div class="learn-item">
+            <h3>Service Offerings</h3>
+            <p>Which offers yield high ROI for outbound, and which fail?</p>
+          </div>
+          <div class="learn-item">
+            <h3>Current Systems</h3>
+            <p>What field software (ServiceTitan, Housecall Pro, spreadsheets) are you currently using?</p>
+          </div>
+          <div class="learn-item">
+            <h3>Success Metrics</h3>
+            <p>What lead-to-quote conversion ratios define a winning campaign for your shop?</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact / CTA Card -->
+      <section id="contact" class="contact-card">
+        <h2>Let’s Grab Coffee Next Week</h2>
+        <p>Partner with us to test drive predictive target data tailored to your territory.</p>
+        
+        <div class="contact-info">
+          <span class="name">Steve Horvath</span>
+          <span class="title">Horvath Data Labs</span>
+          <span>Simsbury, CT</span>
+          <span>Phone: <a href="tel:2628937335">(262) 893-7335</a></span>
+          <span>Email: <a href="mailto:steve@horvathdatalabs.com">steve@horvathdatalabs.com</a></span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>
