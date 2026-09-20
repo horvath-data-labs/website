@@ -8,27 +8,31 @@
 </head>
 <body>
 
+    <!-- Skip Navigation Link for Keyboard Users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Shared Header Placeholder -->
     <div id="header-placeholder"></div>
 
-<script>
-  fetch('/header.html')
-    .then(response => response.text())
-    .then(data => {
-      const placeholder = document.getElementById('header-placeholder');
-      placeholder.innerHTML = data;
+    <script>
+      fetch('/header.html')
+        .then(response => response.text())
+        .then(data => {
+          const placeholder = document.getElementById('header-placeholder');
+          placeholder.innerHTML = data;
 
-      // Automatically set the 'active' class on the matching navigation link
-      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-      const links = placeholder.querySelectorAll('nav a');
-      links.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || href === '/' + currentPage) {
-          link.classList.add('active');
-        }
-      });
-    });
-</script>
+          // Set 'active' class and programmatic 'aria-current' attribute for screen readers
+          const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+          const links = placeholder.querySelectorAll('nav a');
+          links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage || href === '/' + currentPage) {
+              link.classList.add('active');
+              link.setAttribute('aria-current', 'page');
+            }
+          });
+        });
+    </script>
 
     <!-- ARTICLE HERO SECTION -->
     <section class="article-hero">
@@ -38,13 +42,14 @@
     </section>
 
     <!-- MAIN ARTICLE BODY -->
-    <main class="article-container">
+    <main id="main-content" class="article-container">
         <article class="article-body">
         
             <p class="intro-lead">In today’s market, business leaders are expected to use AI as a baseline requirement of their job. You’re likely already using LLMs to draft emails, research markets, and outline presentations. But when it comes to your company’s custom internal database, the operational brain of your business, AI falls flat.</p>
 
             <div class="cost-box">
-                <h3>The Challenge with Internal Data & Off-the-Shelf Tools</h3>
+                <!-- Corrected Heading Hierarchy (h2 after h1) -->
+                <h2>The Challenge with Internal Data & Off-the-Shelf Tools</h2>
                 <ul>
                     <li><strong>Isolated SaaS Reporting:</strong> Your off-the-shelf SaaS tools all have clean, built-in reporting dashboards and may allow natural language querying for isolated data.</li>
                     <li><strong>No Unified Operational Layer:</strong> These tools don't talk to each other, and there is no out-of-the-box reporting layer for the custom database where your core operational data actually lives.</li>
@@ -92,7 +97,8 @@
     <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="cta-box">
-            <h3>Book a 20-Minute Data & AI Readiness Assessment</h3>
+            <!-- Corrected Heading Hierarchy -->
+            <h2>Book a 20-Minute Data & AI Readiness Assessment</h2>
             <p>Discover how a custom semantic layer can transform your raw internal databases into reliable, AI-ready business intelligence.</p>
             <a href="/contact.html" class="btn-primary">Book Your 20-Minute Assessment</a>
         </div>

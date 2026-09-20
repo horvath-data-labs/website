@@ -1,10 +1,14 @@
-<header>
+<header role="banner">
     <div class="logo">
-        <a href="/index.html">Horvath Data Labs</a>
+        <a href="/index.html" aria-label="Horvath Data Labs Homepage">Horvath Data Labs</a>
     </div>
-    <nav>
-        <a href="/index.html">Home</a>
-        <a href="/about.html">About Steve</a>
-        <a href="/contact.html">Contact Today</a>
+    <!-- 1. Accessible landmark label -->
+    <nav aria-label="Main Navigation">
+        <!-- 2. Semantic list structure for screen readers -->
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/about.html">About Steve</a></li>
+            <li><a href="/contact.html">Contact Today</a></li>
+        </ul>
     </nav>
 </header>

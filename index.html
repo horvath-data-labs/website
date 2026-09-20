@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horvath Data Labs</title>
+    <title>Horvath Data Labs - Modern Data Pipelines & Predictive Analytics</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- 1. Skip to Content Link for Keyboard Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Shared Header Placeholder -->
     <div id="header-placeholder"></div>
@@ -18,94 +21,112 @@
           const placeholder = document.getElementById('header-placeholder');
           placeholder.innerHTML = data;
 
-          // Automatically set the 'active' class on the matching navigation link
+          // Automatically set 'active' class and 'aria-current' for screen readers
           const currentPage = window.location.pathname.split('/').pop() || 'index.html';
           const links = placeholder.querySelectorAll('nav a');
           links.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
+            const href = link.getAttribute('href');
+            if (href === currentPage || href === '/' + currentPage) {
               link.classList.add('active');
+              link.setAttribute('aria-current', 'page');
             }
           });
         });
     </script>
 
-    <!-- SECTION 1: HERO (Clean, Above the Fold) -->
-    <section class="hero-container">
-        <div class="hero-text">
-            <h1>Consolidate, Govern, Predict, Execute</h1>
-            <p>We build the modern data pipelines, semantic layers, and predictive models that turn fragmented operational data into trusted business decisions.</p>
-            <a href="contact.html".html" class="btn-primary">Schedule a Data Architecture Review</a>
-        </div>
-        <div class="hero-image"></div>
-    </section>
+    <!-- 2. Main Structural Landmark -->
+    <main id="main-content">
 
-    <!-- SECTION 2: THE 4-STEP PROCESS (Horizontal 4-Card Grid) -->
-    <section class="process-section" id="process">
-        <div class="section-header">
-            <h2>End-to-End Operational Intelligence</h2>
-            <p>Modern businesses don't suffer from a lack of data; they suffer from data fragmentation. Our four-stage methodology bridges raw infrastructure with predictive execution.</p>
-        </div>
+        <!-- SECTION 1: HERO -->
+        <section class="hero-container" aria-labelledby="hero-title">
+            <div class="hero-text">
+                <h1 id="hero-title">Consolidate, Govern, Predict, Execute</h1>
+                <p>We build the modern data pipelines, semantic layers, and predictive models that turn fragmented operational data into trusted business decisions.</p>
+                <!-- 3. Fixed Link Syntax Error -->
+                <a href="contact.html" class="btn-primary">Schedule a Data Architecture Review</a>
+            </div>
+            <!-- 4. Hidden Decorative Element -->
+            <div class="hero-image" aria-hidden="true"></div>
+        </section>
 
-        <div class="grid-container">
-            <!-- Step 1 -->
-            <div class="card">
-                <span class="step-number">STEP 01</span>
-                <h3>Consolidate</h3>
-                <h4>Pipeline Engineering</h4>
-                <p>We unify fragmented data from your software vendors, public registries, and CRM records into a clean, audited operational warehouse.</p>
+        <!-- SECTION 2: THE 4-STEP PROCESS -->
+        <section class="process-section" id="process" aria-labelledby="process-title">
+            <div class="section-header">
+                <h2 id="process-title">End-to-End Operational Intelligence</h2>
+                <p>Modern businesses don't suffer from a lack of data; they suffer from data fragmentation. Our four-stage methodology bridges raw infrastructure with predictive execution.</p>
             </div>
 
-            <!-- Step 2 -->
-            <div class="card">
-                <span class="step-number">STEP 02</span>
-                <h3>Govern</h3>
-                <h4>Semantic Layer</h4>
-                <p>We build a custom semantic layer on top of your warehouse so your leadership, team, and AI tools query key metrics in plain English with zero hallucinations.</p>
+            <div class="grid-container">
+                <!-- Step 1 -->
+                <article class="card">
+                    <span class="step-number">STEP 01</span>
+                    <h3>Consolidate</h3>
+                    <p class="card-subtitle"><strong>Pipeline Engineering</strong></p>
+                    <p>We unify fragmented data from your software vendors, public registries, and CRM records into a clean, audited operational warehouse.</p>
+                </article>
+
+                <!-- Step 2 -->
+                <article class="card">
+                    <span class="step-number">STEP 02</span>
+                    <h3>Govern</h3>
+                    <p class="card-subtitle"><strong>Semantic Layer</strong></p>
+                    <p>We build a custom semantic layer on top of your warehouse so your leadership, team, and AI tools query key metrics in plain English with zero hallucinations.</p>
+                </article>
+
+                <!-- Step 3 -->
+                <article class="card">
+                    <span class="step-number">STEP 03</span>
+                    <h3>Predict</h3>
+                    <p class="card-subtitle"><strong>Machine Learning</strong></p>
+                    <p>We deploy custom machine learning models across your unified data to calculate propensity scores, identify high-value prospects, and eliminate wasted spend.</p>
+                </article>
+
+                <!-- Step 4 -->
+                <article class="card">
+                    <span class="step-number">STEP 04</span>
+                    <h3>Execute</h3>
+                    <p class="card-subtitle"><strong>Agile Strategy &amp; Validation</strong></p>
+                    <p>We work directly alongside your team to implement feedback loops, validate model predictions, and ensure "data-driven" becomes an operational reality.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION 3: APPLIED EXPERTISE -->
+        <section class="expertise-section" id="expertise" aria-labelledby="expertise-title">
+            <div class="section-header">
+                <h2 id="expertise-title">Applied Expertise</h2>
+                <p>Explore how our engineering architecture solves specialized operational challenges.</p>
             </div>
 
-            <!-- Step 3 -->
-            <div class="card">
-                <span class="step-number">STEP 03</span>
-                <h3>Predict</h3>
-                <h4>Machine Learning</h4>
-                <p>We deploy custom machine learning models across your unified data to calculate propensity scores, identify high-value prospects, and eliminate wasted spend.</p>
-            </div>
+            <div class="expertise-grid">
+                <article class="expertise-card">
+                    <h3>System Conversions &amp; Migrations</h3>
+                    <p>Eliminate risk during major software updates with version-controlled pipelines and automated SME validation frameworks.</p>
+                    <!-- 5. Accessible Link Labels and Hidden Arrows -->
+                    <a href="blog/agile-consulting.html" aria-label="Read Migration Approach for System Conversions and Migrations">
+                        Read Migration Approach <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </article>
 
-            <!-- Step 4 -->
-            <div class="card">
-                <span class="step-number">STEP 04</span>
-                <h3>Execute</h3>
-                <h4>Agile Strategy & Validation</h4>
-                <p>We work directly alongside your team to implement feedback loops, validate model predictions, and ensure "data-driven" becomes an operational reality.</p>
-            </div>
-        </div>
-    </section>
+                <article class="expertise-card">
+                    <h3>Semantic Layers &amp; AI Readiness</h3>
+                    <p>Bridge the gap between raw internal databases and AI querying with hardcoded metric logic and context governance.</p>
+                    <a href="blog/semantic-layer.html" aria-label="Read Semantic Overview for Semantic Layers and AI Readiness">
+                        Read Semantic Overview <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </article>
 
-    <!-- SECTION 3: APPLIED EXPERTISE (Targeted Subpage Links) -->
-    <section class="expertise-section" id="expertise">
-        <div class="section-header" style="margin-bottom: 20px;">
-            <h2>Applied Expertise</h2>
-            <p>Explore how our engineering architecture solves specialized operational challenges.</p>
-        </div>
+                <article class="expertise-card">
+                    <h3>Customer Propensity Modeling</h3>
+                    <p>Combine public records, municipal data, and CRM history to target homeowners and prospects with machine-learning accuracy.</p>
+                    <a href="blog/home-and-residential.html" aria-label="Read Offering for Customer Propensity Modeling">
+                        Read Offering <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </article>
+            </div>
+        </section>
 
-        <div class="expertise-grid">
-            <div class="expertise-card">
-                <h4>System Conversions & Migrations</h4>
-                <p>Eliminate risk during major software updates with version-controlled pipelines and automated SME validation frameworks.</p>
-                <a href="blog/agile-consulting.html">Read Migration Approach &rarr;</a>
-            </div>
-            <div class="expertise-card">
-                <h4>Semantic Layers & AI Readiness</h4>
-                <p>Bridge the gap between raw internal databases and AI querying with hardcoded metric logic and context governance.</p>
-                <a href="blog/semantic-layer.html">Read Semantic Overview &rarr;</a>
-            </div>
-            <div class="expertise-card">
-                <h4>Customer Propensity Modeling</h4>
-                <p>Combine public records, municipal data, and CRM history to target homeowners and prospects with machine-learning accuracy.</p>
-                <a href="blog/home-and-residential.html">Read Offering &rarr;</a>
-            </div>
-        </div>
-    </section>
+    </main>
 
 </body>
 </html>

@@ -8,27 +8,31 @@
 </head>
 <body>
 
+    <!-- Skip Navigation Link for Keyboard Users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Shared Header Placeholder -->
     <div id="header-placeholder"></div>
 
-<script>
-  fetch('/header.html')
-    .then(response => response.text())
-    .then(data => {
-      const placeholder = document.getElementById('header-placeholder');
-      placeholder.innerHTML = data;
+    <script>
+      fetch('/header.html')
+        .then(response => response.text())
+        .then(data => {
+          const placeholder = document.getElementById('header-placeholder');
+          placeholder.innerHTML = data;
 
-      // Automatically set the 'active' class on the matching navigation link
-      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-      const links = placeholder.querySelectorAll('nav a');
-      links.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || href === '/' + currentPage) {
-          link.classList.add('active');
-        }
-      });
-    });
-</script>
+          // Set 'active' class and programmatic 'aria-current' attribute for screen readers
+          const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+          const links = placeholder.querySelectorAll('nav a');
+          links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage || href === '/' + currentPage) {
+              link.classList.add('active');
+              link.setAttribute('aria-current', 'page');
+            }
+          });
+        });
+    </script>
 
     <!-- ARTICLE HERO SECTION -->
     <section class="article-hero">
@@ -38,13 +42,14 @@
     </section>
 
     <!-- MAIN ARTICLE BODY -->
-    <main class="article-container">
+    <main id="main-content" class="article-container">
         <article class="article-body">
         
             <p class="intro-lead">Every month, residential service contractors suffer significant margin loss not from poor craftsmanship, but from marketing into a void. Relying on broad zip code targeting creates an unsustainable financial drain.</p>
 
             <div class="cost-box">
-                <h3>The Continuous Cost of Doing Nothing: Your Current State</h3>
+                <!-- Corrected Heading Hierarchy (h2 after h1) -->
+                <h2>The Continuous Cost of Doing Nothing: Your Current State</h2>
                 <ul>
                     <li><strong>Every Door Direct Mail (EDDM):</strong> Burns over $1,000 per zip code delivering offers to roofs, HVACs, and sidings replaced last year.</li>
                     <li><strong>Search Engine Advertising:</strong> Costs $15 to $35+ per click and upwards of $150 per lead, pitting you against competitors for unvetted traffic.</li>
@@ -99,7 +104,8 @@
     <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="cta-box">
-            <h3>Calculate Your Cost of Inaction</h3>
+            <!-- Corrected Heading Hierarchy -->
+            <h2>Calculate Your Cost of Inaction</h2>
             <p>Stop paying for addresses that will never convert. Map your current acquisition gap and discover how precision targeting drives immediate ROI.</p>
             <a href="/contact.html" class="btn-primary">Schedule a Free Data Architecture & Gap Audit</a>
         </div>

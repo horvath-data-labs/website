@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    <!-- 1. Skip Navigation Link for Keyboard Users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Shared Header Placeholder -->
     <div id="header-placeholder"></div>
 
@@ -18,25 +21,29 @@
           const placeholder = document.getElementById('header-placeholder');
           placeholder.innerHTML = data;
 
-          // Automatically set the 'active' class on the matching navigation link
+          // 2. Set 'active' class and programmatic 'aria-current' attribute
           const currentPage = window.location.pathname.split('/').pop() || 'index.html';
           const links = placeholder.querySelectorAll('nav a');
           links.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
+            const href = link.getAttribute('href');
+            if (href === currentPage || href === '/' + currentPage) {
               link.classList.add('active');
+              link.setAttribute('aria-current', 'page');
             }
           });
         });
     </script>
 
-    <div class="container">
+    <!-- 3. Semantic Main Container Landmark -->
+    <main id="main-content" class="container">
         
         <div class="info-col">
             <h1>Schedule a Data Architecture Review</h1>
             <p>A focused strategic working session to evaluate your current data pipelines, uncover technical debt, and chart a clear path to reliable analytics.</p>
 
             <div class="expectations-card">
-                <h3>What to Expect</h3>
+                <!-- 4. Corrected Heading Hierarchy (h2 after h1) -->
+                <h2>What to Expect</h2>
                 <ul>
                     <li><strong>Technical Discovery & Fit:</strong> An initial scoping session focused on understanding your data bottlenecks and evaluating if our engineering approach is the right match.</li>
                     <li><strong>Stack Assessment:</strong> Direct feedback on your existing ETL/ELT pipelines, database schemas, and metrics governance.</li>
@@ -50,19 +57,20 @@
                 
                 <input type="hidden" name="form-name" value="data-architecture-review" />
 
+                <!-- 5. Accessibility-enhanced inputs with aria-required -->
                 <div class="form-group">
                     <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                    <input type="text" id="name" name="name" required aria-required="true" placeholder="Jane Doe">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Work Email *</label>
-                    <input type="email" id="email" name="email" required placeholder="jane@company.com">
+                    <input type="email" id="email" name="email" required aria-required="true" placeholder="jane@company.com">
                 </div>
 
                 <div class="form-group">
                     <label for="company">Company / Organization *</label>
-                    <input type="text" id="company" name="company" required placeholder="Acme Corp">
+                    <input type="text" id="company" name="company" required aria-required="true" placeholder="Acme Corp">
                 </div>
 
                 <div class="form-group">
@@ -84,7 +92,7 @@
             </form>
         </div>
 
-    </div>
+    </main>
 
 </body>
 </html>
